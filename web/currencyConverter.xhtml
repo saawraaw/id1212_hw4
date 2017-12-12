@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Currency Converter</title>
+    </h:head>
+    <h:body>
+        <h1>Welcome to Currency Converter!</h1>
+        <h:outputText value="&#160;" />
+        
+        <h:form>
+            <p>
+                <h3>Enter Amount to Convert</h3>
+                <h:outputLabel for="baseCurrencyVal" value="Amount: "/>
+                <h:inputText id="baseCurrencyVal" value="#{currencyManager.currency1value}"/>
+            </p>
+            <h:outputText value="&#160;" />
+            
+            <p>
+                <h3>From:</h3>
+                <h:selectOneMenu value="#{currencyManager.currency1}">
+                    <f:selectItems value="#{currencyManager.currencyArray}"/>
+                </h:selectOneMenu>
+            </p>
+            <h:outputText value="&#160;" />
+            
+            <p>
+                <h3>To:</h3>
+                <h:selectOneMenu value="#{currencyManager.currency2}">
+                    <f:selectItems value="#{currencyManager.currencyArray}"/>
+                </h:selectOneMenu>
+            </p>
+            <h:outputText value="&#160;" />
+            
+            <p>
+                <h:commandButton value="Convert" action="#{currencyManager.convert}"/>
+            </p>
+            
+            <p>
+                <h:outputLabel for="outputVal" rendered="#{currencyManager.currency2value != null}"  value="Result: "/>
+                <h:outputText id="outputVal" value="#{currencyManager.currency2value}"/>
+            </p>
+            
+            <p>
+                <h:outputLabel for="error" rendered="#{currencyManager.errorMsg != null}"  value="Error while converting: "/>
+                <h:outputText id="error" value="#{currencyManager.errorMsg}"/>
+            </p>
+            
+        </h:form>
+        
+    </h:body>
+</html>
+
